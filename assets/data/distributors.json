@@ -1,0 +1,299 @@
+{
+ "states": {
+  "AL": "Alabama",
+  "AR": "Arkansas",
+  "CT": "Connecticut",
+  "FL": "Florida",
+  "IA": "Iowa",
+  "IL": "Illinois",
+  "IN": "Indiana",
+  "KS": "Kansas",
+  "KY": "Kentucky",
+  "MA": "Massachusetts",
+  "ME": "Maine",
+  "MI": "Michigan",
+  "MN": "Minnesota",
+  "MO": "Missouri",
+  "MS": "Mississippi",
+  "NJ": "New Jersey",
+  "NY": "New York",
+  "OH": "Ohio",
+  "OR": "Oregon",
+  "SC": "South Carolina",
+  "TN": "Tennessee",
+  "TX": "Texas",
+  "VA": "Virginia"
+ },
+ "distributors": [
+  {
+   "name": "Athletic Field Supply, LLC",
+   "city": "Leeds",
+   "state": "AL"
+  },
+  {
+   "name": "Agra Turf Inc.",
+   "city": "Searcy",
+   "state": "AR"
+  },
+  {
+   "name": "Farmers Cooperative Assoc",
+   "city": "Cabot",
+   "state": "AR"
+  },
+  {
+   "name": "Apgar Sales Company",
+   "city": "Danbury",
+   "state": "CT"
+  },
+  {
+   "name": "Jaypro Sports, LLC",
+   "city": "Waterford",
+   "state": "CT"
+  },
+  {
+   "name": "Autrey Supply Company, Inc",
+   "city": "Jay",
+   "state": "FL"
+  },
+  {
+   "name": "Big Earth Supply (Heritage)",
+   "city": "Sarasota",
+   "state": "FL"
+  },
+  {
+   "name": "Surface Prep",
+   "city": "Haines City",
+   "state": "FL"
+  },
+  {
+   "name": "CD Ford & Sons",
+   "city": "Geneseo",
+   "state": "IL"
+  },
+  {
+   "name": "GROWMARK",
+   "city": "Alpha",
+   "state": "IL"
+  },
+  {
+   "name": "Martenson Turf Products, Inc.",
+   "city": "Waterman",
+   "state": "IL"
+  },
+  {
+   "name": "The Cary Company",
+   "city": "Addison",
+   "state": "IL"
+  },
+  {
+   "name": "Van's Enterprises Ltd",
+   "city": "Waukegan",
+   "state": "IL"
+  },
+  {
+   "name": "The Cisco Companies",
+   "city": "Indianapolis",
+   "state": "IN"
+  },
+  {
+   "name": "Capital Sanitary Supply",
+   "city": "Des Moines",
+   "state": "IA"
+  },
+  {
+   "name": "D & K Products",
+   "city": "Des Moines",
+   "state": "IA"
+  },
+  {
+   "name": "Heartland Hardware",
+   "city": "George",
+   "state": "IA"
+  },
+  {
+   "name": "Stout Seed",
+   "city": "Ainsworth",
+   "state": "IA"
+  },
+  {
+   "name": "Zimco Supply",
+   "city": "Sioux City",
+   "state": "IA"
+  },
+  {
+   "name": "Green Seed Company",
+   "city": "Springhill",
+   "state": "KS"
+  },
+  {
+   "name": "Caudill Seed Company",
+   "city": "Morehead",
+   "state": "KY"
+  },
+  {
+   "name": "Steven Logan Construction Inc",
+   "city": "Greenup",
+   "state": "KY"
+  },
+  {
+   "name": "Sports Fields Inc.",
+   "city": "Monmouth",
+   "state": "ME"
+  },
+  {
+   "name": "N.E.S.S. New England Specialty Soils",
+   "city": "Leominster",
+   "state": "MA"
+  },
+  {
+   "name": "Read Custom Soils",
+   "city": "Westford",
+   "state": "MA"
+  },
+  {
+   "name": "Corrigan Environmental Solutions",
+   "city": "Brighton",
+   "state": "MI"
+  },
+  {
+   "name": "SiteOne Landscape Supply",
+   "city": "Troy",
+   "state": "MI"
+  },
+  {
+   "name": "Stone Quest Landscape Stone & Supply",
+   "city": "Saginaw",
+   "state": "MI"
+  },
+  {
+   "name": "Gerten Greenhouses and Garden Center, Inc",
+   "city": "Eagan",
+   "state": "MN"
+  },
+  {
+   "name": "Tessman Seed Company",
+   "city": "St. Paul",
+   "state": "MN"
+  },
+  {
+   "name": "Oil-Dri Production Co.",
+   "city": "Ripley",
+   "state": "MS"
+  },
+  {
+   "name": "All American Paint Co.",
+   "city": "Platte City",
+   "state": "MO"
+  },
+  {
+   "name": "GameTime Athletics",
+   "city": "Platte City",
+   "state": "MO"
+  },
+  {
+   "name": "GreensPro",
+   "city": "High Ridge",
+   "state": "MO"
+  },
+  {
+   "name": "Hummert International",
+   "city": "St. Joseph",
+   "state": "MO"
+  },
+  {
+   "name": "Extech Building Materials",
+   "city": "Parsippany",
+   "state": "NJ"
+  },
+  {
+   "name": "Magnolia Gardens",
+   "city": "Magnolia",
+   "state": "NJ"
+  },
+  {
+   "name": "Noble Turf Warehouse, LLC",
+   "city": "Mount Laurel",
+   "state": "NJ"
+  },
+  {
+   "name": "Winning Teams by Nissel LLC",
+   "city": "Flemington",
+   "state": "NJ"
+  },
+  {
+   "name": "Banfield-Baker",
+   "city": "Bath",
+   "state": "NY"
+  },
+  {
+   "name": "Devitt's Supply Inc",
+   "city": "New Windsor",
+   "state": "NY"
+  },
+  {
+   "name": "Long Island Cauliflower Association",
+   "city": "Riverhead",
+   "state": "NY"
+  },
+  {
+   "name": "Maxwell Turf and Supply Co",
+   "city": "Wyandanch",
+   "state": "NY"
+  },
+  {
+   "name": "Northern Nurseries, Inc.",
+   "city": "Schenectady",
+   "state": "NY"
+  },
+  {
+   "name": "Pollack Paint and Field (Mercury Paint)",
+   "city": "Bronx",
+   "state": "NY"
+  },
+  {
+   "name": "Green Velvet Farms Ltd.",
+   "city": "Bellbrook",
+   "state": "OH"
+  },
+  {
+   "name": "Pioneer Athletics",
+   "city": "Cleveland",
+   "state": "OH"
+  },
+  {
+   "name": "Valley Athletics",
+   "city": "Portland",
+   "state": "OR"
+  },
+  {
+   "name": "Northwestern Supply",
+   "city": "Seneca",
+   "state": "SC"
+  },
+  {
+   "name": "Dickens Turf & Landscape Supply",
+   "city": "Nashville",
+   "state": "TN"
+  },
+  {
+   "name": "STS Distribution",
+   "city": "Columbia",
+   "state": "TN"
+  },
+  {
+   "name": "Landworks Landscapes",
+   "city": "Nacogdoches",
+   "state": "TX"
+  },
+  {
+   "name": "Horizon Distributors, LLC",
+   "city": "Yorktown",
+   "state": "VA"
+  },
+  {
+   "name": "Horizon Turf & Garden",
+   "city": "Chesapeake",
+   "state": "VA"
+  }
+ ]
+}

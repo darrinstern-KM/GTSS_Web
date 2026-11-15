@@ -20,3 +20,6 @@ SetEnvIf Request_URI ^/staging/ STAGING
 
 # Block access to hidden files
 RedirectMatch 404 /\.git
+
+# Keep build tools private
+RedirectMatch 404 ^/tools/
