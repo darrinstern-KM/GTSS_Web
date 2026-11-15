@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Rebuilds distributors/index.html from assets/data/distributors.json.
 Edit the JSON file, then run:  python3 tools/build_distributors.py"""
-import json, html, os, collections
+import json, html, os, sys, collections
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import layout
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 data = json.load(open(os.path.join(root, 'assets/data/distributors.json')))
 names, dists = data['states'], data['distributors']
@@ -20,45 +22,7 @@ ld = json.dumps({"@context": "https://schema.org", "@type": "ItemList", "name": 
                      {"@type": "ListItem", "position": i + 1, "item": {"@type": "Organization", "name": d["name"],
                       "address": {"@type": "PostalAddress", "addressLocality": d["city"], "addressRegion": d["state"], "addressCountry": "US"}}}
                      for i, d in enumerate(dists)]})
-page = f'''<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Find a Distributor | GameTime Sports Systems</title>
-<meta name="description" content="Find a GameTime Sports Systems distributor near you. {n} distributors in {ns} states stock GameTime infield conditioners, mound clay and field marking products.">
-<link rel="canonical" href="https://gametimesportssystems.com/distributors/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Find a Distributor | GameTime Sports Systems">
-<meta property="og:description" content="{n} distributors in {ns} states stock GameTime field products.">
-<meta property="og:url" content="https://gametimesportssystems.com/distributors/">
-<script type="application/ld+json">{ld}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to main content</a>
-
-<header id="top" class="solid">
-  <div class="wrap bar">
-    <a class="logo" href="/" aria-label="GameTime Sports Systems home"><img src="/assets/img/gametime-logo.png" alt="GameTime Sports Systems" width="154" height="49"></a>
-    <nav aria-label="Main">
-      <a href="/#products">Products</a>
-      <a href="/#calculator">Calculator</a>
-      <a href="/distributors/" aria-current="page">Distributors</a>
-      <a href="/#ordering">Ordering</a>
-    </nav>
-    <div class="right">
-      <a class="tel" href="tel:18005200512">800.520.0512</a>
-      <a class="btn" href="/#quote">Get a quote</a>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-<div class="pagehead">
+body = f'''<div class="pagehead">
   <div class="wrap">
     <p class="crumbs"><a href="/">Home</a> / Distributors</p>
     <p class="eyebrow" style="color:#F2B84B">Buy local</p>
@@ -95,23 +59,9 @@ page = f'''<!doctype html>
     </div>
   </div>
 </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr">2026</span> GameTime Sports Systems, LLC. Northbrook, Illinois.</span>
-    <nav aria-label="Footer"><a href="/privacy/">Privacy policy</a><a href="/terms-and-conditions/">Terms</a><a href="/accessibility/">Accessibility</a><a href="#top">Back to top</a></nav>
-  </div>
-</footer>
-
-<div class="sticky" id="sticky" role="region" aria-label="Quick contact">
-  <a class="btn call" href="tel:18005200512" aria-label="Call GameTime">Call</a>
-  <a class="btn" href="/#quote">Get a quote</a>
-</div>
-<script src="/assets/js/site.js" defer></script>
-</body>
-</html>
 '''
+extra = f'<script type="application/ld+json">{ld}</script>'
+page = layout.page('Find a Distributor | GameTime Sports Systems', f'Find a GameTime Sports Systems distributor near you. {n} distributors in {ns} states stock GameTime infield conditioners, mound clay and field marking products.', '/distributors/', body, current='Distributors', extra_head=extra)
 os.makedirs(os.path.join(root, 'distributors'), exist_ok=True)
 open(os.path.join(root, 'distributors/index.html'), 'w').write(page)
 print(f'Wrote distributors/index.html: {n} distributors, {ns} states')

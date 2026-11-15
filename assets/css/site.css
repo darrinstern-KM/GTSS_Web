@@ -46,7 +46,7 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}footer nav a{opacity:1;font-weig
 header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s ease,box-shadow .3s ease}
 header.solid{background:rgba(20,24,27,.96);box-shadow:0 2px 18px rgba(0,0,0,.25)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
-.logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
+.logo img{height:38px;width:auto}
 nav{display:flex;gap:28px}
 nav a{color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85}
 nav a:hover{opacity:1}
@@ -203,3 +203,28 @@ footer a{color:#fff}
 @media (max-width:900px){.dist .wrap,.become .wrap{grid-template-columns:1fr;gap:32px}.stategrid{grid-template-columns:1fr}.pagehead{padding-top:120px}}
 
 .dist .eyebrow,.dist .textlink{color:var(--clay-dark)}
+
+/* ========== GUIDES ========== */
+.guide{max-width:860px}
+.guide h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:56px 0 14px}
+.guide h3{margin:26px 0 8px}
+.guide p{margin:0 0 14px}
+.guide ol{margin:0 0 14px;padding-left:22px}
+.guide li{margin-bottom:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{background:#fff;border:1px solid var(--sand);border-radius:6px;padding:24px}
+.box h3{margin-top:0}
+.key{background:var(--ink);color:#fff;border-radius:6px;padding:20px 24px;display:flex;gap:18px;align-items:center;margin:24px 0}
+.key b{font-family:var(--head);font-size:2rem;color:#F2B84B;text-transform:uppercase;line-height:1;white-space:nowrap}
+.tablewrap{overflow-x:auto;margin:0 0 10px;border:1px solid var(--sand);border-radius:6px;background:#fff}
+table.cov{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+table.cov caption{text-align:left;font-family:var(--head);font-weight:700;font-size:1.3rem;text-transform:uppercase;color:var(--ink);padding:14px 16px 6px}
+table.cov th,table.cov td{padding:10px 16px;text-align:right;border-top:1px solid var(--sand);font-variant-numeric:tabular-nums}
+table.cov th:first-child,table.cov td:first-child,table.cov th:nth-child(2),table.cov td:nth-child(2){text-align:left}
+table.cov thead th{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-top:0}
+table.cov tbody th{font-weight:600;color:var(--ink)}
+table.cov tfoot td,table.cov tfoot th{font-weight:700;background:var(--chalk)}
+.diagram{background:#fff;border:1px solid var(--sand);border-radius:6px;padding:20px;margin:0 0 14px}
+.diagram svg{width:100%;height:auto;max-width:560px;display:block;margin:0 auto}
+.cardlist{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.two,.cardlist{grid-template-columns:1fr}.key{flex-direction:column;align-items:flex-start}}
