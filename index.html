@@ -159,6 +159,11 @@ input,select,textarea{width:100%;font:inherit;padding:12px 14px;border:1px solid
 .contact-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px}
 .contact-list a{color:#F2B84B;text-decoration:none;font-weight:600}
 form .full{margin-bottom:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.formmsg{background:#FDECE7;border-left:4px solid var(--clay);padding:12px 14px;border-radius:0 4px 4px 0;margin:0 0 14px;font-size:.95rem}
+.thanks h3{color:var(--turf)}
+.btn[disabled]{opacity:.7;cursor:progress}
+
 
 footer{background:#0D1012;color:rgba(255,255,255,.8);padding:36px 0 96px;font-size:.88rem}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -367,20 +372,40 @@ footer a{color:#fff}
         <li>Need something not listed? We can source it.</li>
       </ul>
     </div>
-    <form class="panel fade" id="quoteform">
+    <form class="panel fade" id="quoteform" novalidate>
       <div class="row">
-        <div><label for="name">Your name <span class="req">(required)</span></label><input id="name" required autocomplete="name"></div>
-        <div><label for="org">Organization</label><input id="org" autocomplete="organization"></div>
+        <div><label for="fname">First name <span class="req">(required)</span></label><input id="fname" required autocomplete="given-name"></div>
+        <div><label for="lname">Last name <span class="req">(required)</span></label><input id="lname" required autocomplete="family-name"></div>
       </div>
       <div class="row">
         <div><label for="email">Email <span class="req">(required)</span></label><input id="email" type="email" required autocomplete="email"></div>
-        <div><label for="zip">Delivery ZIP</label><input id="zip" inputmode="numeric" autocomplete="postal-code"></div>
+        <div><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel"></div>
       </div>
-      <div class="full"><label for="need">What do you need?</label><textarea id="need" rows="4" placeholder="Example: 8 tons of Stadium Red for a 90 ft high school infield"></textarea></div>
+      <div class="row">
+        <div><label for="org">Organization <span class="req">(required)</span></label><input id="org" required autocomplete="organization"></div>
+        <div><label for="orgtype">Type of organization <span class="req">(required)</span></label>
+          <select id="orgtype" required>
+            <option value="">Choose one</option>
+            <option>Youth league</option>
+            <option>Parks and recreation or municipality</option>
+            <option>School or college</option>
+            <option>Professional or stadium</option>
+            <option>Distributor or contractor</option>
+            <option>Other</option>
+          </select></div>
+      </div>
+      <div class="full"><label for="zip">Delivery ZIP <span class="req">(required)</span></label><input id="zip" required inputmode="numeric" autocomplete="postal-code" maxlength="10" style="max-width:220px"></div>
+      <div class="full"><label for="need">What do you need? <span class="req">(required)</span></label><textarea id="need" rows="4" required placeholder="Example: 8 tons of Stadium Red for a 90 ft high school infield, needed by March"></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" tabindex="-1" autocomplete="off"></div>
       <label class="check" for="optin"><input id="optin" type="checkbox"> <span>Also send me seasonal field care tips by email. Optional. Unsubscribe any time.</span></label>
-      <button class="btn" style="width:100%" type="submit">Send my quote request</button>
+      <p class="formmsg" id="formmsg" role="alert" hidden></p>
+      <button class="btn" style="width:100%" type="submit" id="sendbtn">Send my quote request</button>
       <p class="note" style="margin-top:12px">We use your details only to answer this request. We never sell or share them. <a href="/privacy/">Privacy policy</a>.</p>
     </form>
+    <div class="panel thanks" id="thanks" tabindex="-1" hidden>
+      <h3>Request received</h3>
+      <p style="margin-top:10px">Thank you. We have your details and will reply with a delivered price. Need it faster? Call <a href="tel:18005200512">800.520.0512</a>.</p>
+    </div>
   </div>
 </section>
 </main>
@@ -440,12 +465,36 @@ document.getElementById('sendcalc').addEventListener('click',function(){
 document.querySelectorAll('.card').forEach(function(c){ c.addEventListener('click',function(){ need.value = 'Please quote: ' + c.dataset.product + '. '; }); });
 calc();
 
-/* Quote form: builds an email. Swap for a form service at launch. */
-document.getElementById('quoteform').addEventListener('submit',function(e){
+/* Quote form: sends the request to HubSpot. No tracking scripts are loaded. */
+var HS_URL = 'https://api.hsforms.com/submissions/v3/integration/submit/22428113/eeae102b-76cf-4d4a-a297-bd196cd36e0c';
+var interest = '', estimate = '';
+document.querySelectorAll('.card').forEach(function(c){ c.addEventListener('click',function(){ interest = c.dataset.product; }); });
+document.getElementById('sendcalc').addEventListener('click',function(){ estimate = need.value; });
+var qf = document.getElementById('quoteform'), msg = document.getElementById('formmsg'), sendbtn = document.getElementById('sendbtn');
+function showMsg(html){ msg.innerHTML = html; msg.hidden = false; }
+qf.addEventListener('submit',function(e){
   e.preventDefault();
   var v = function(id){ return document.getElementById(id).value.trim(); };
-  var body = 'Name: '+v('name')+'\nOrganization: '+v('org')+'\nEmail: '+v('email')+'\nDelivery ZIP: '+v('zip')+'\nField care tips by email: '+(document.getElementById('optin').checked?'Yes':'No')+'\n\nRequest:\n'+v('need');
-  window.location.href = 'mailto:info@gametimesportssystems.com?subject=' + encodeURIComponent('Quote request from ' + (v('org')||v('name'))) + '&body=' + encodeURIComponent(body);
+  if (v('website')) return; /* spam trap: real people never fill this */
+  var bad = qf.querySelector(':invalid');
+  if (bad){ showMsg('Please complete the required fields. Check: ' + qf.querySelector('label[for="'+bad.id+'"]').firstChild.textContent.trim() + '.'); bad.focus(); return; }
+  var message = v('need') + '\n\nOrganization type: ' + v('orgtype') +
+    (interest ? '\nProduct interest: ' + interest : '') +
+    (estimate ? '\nCalculator estimate: ' + estimate : '') +
+    '\nSource page: ' + document.title +
+    '\nField care tips by email: ' + (document.getElementById('optin').checked ? 'Yes' : 'No');
+  var f = function(name,value){ return {objectTypeId:'0-1', name:name, value:value}; };
+  var fields = [f('firstname',v('fname')), f('lastname',v('lname')), f('email',v('email')), f('company',v('org')), f('zip',v('zip')), f('message',message)];
+  if (v('phone')) fields.push(f('phone',v('phone')));
+  sendbtn.disabled = true; sendbtn.textContent = 'Sending...'; msg.hidden = true;
+  fetch(HS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:document.title}})})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); })
+    .then(function(){ qf.hidden = true; var t = document.getElementById('thanks'); t.hidden = false; t.focus(); })
+    .catch(function(){
+      sendbtn.disabled = false; sendbtn.textContent = 'Send my quote request';
+      var mail = 'mailto:info@gametimesportssystems.com?subject=' + encodeURIComponent('Quote request from ' + v('org')) + '&body=' + encodeURIComponent(v('fname')+' '+v('lname')+'\n'+v('email')+' '+v('phone')+'\n'+v('org')+'\nZIP '+v('zip')+'\n\n'+message);
+      showMsg('Sorry, that did not send. Please <a href="'+mail+'">email your request</a> or call <a href="tel:18005200512">800.520.0512</a>.');
+    });
 });
 </script>
 </body>
