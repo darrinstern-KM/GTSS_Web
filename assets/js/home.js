@@ -61,8 +61,9 @@ Object.keys(ALL_STATES).sort(function(a,b){ return ALL_STATES[a] < ALL_STATES[b]
   var o = document.createElement('option'); o.value = k; o.textContent = ALL_STATES[k]; pick.appendChild(o);
 });
 var distData = null;
-fetch('/assets/data/distributors.json').then(function(r){ return r.json(); }).then(function(d){ distData = d.distributors; }).catch(function(){});
-pick.addEventListener('change',function(){
+var distReady = fetch('/assets/data/distributors.json').then(function(r){ return r.json(); }).then(function(d){ distData = d.distributors; }).catch(function(){});
+pick.addEventListener('change',function(){ distReady.then(showDistributors); });
+function showDistributors(){
   var st = pick.value; out.textContent = '';
   if (!st) return;
   if (!distData){ out.innerHTML = '<p class="none"><a class="textlink" href="/distributors/">View the full distributor list</a></p>'; return; }
@@ -76,4 +77,4 @@ pick.addEventListener('change',function(){
     var p2 = document.createElement('p'); p2.className = 'none'; p2.textContent = 'No distributor in ' + ALL_STATES[st] + ' yet. We ship direct to you.'; out.appendChild(p2);
   }
   var a = document.createElement('a'); a.className = 'btn dark'; a.href = '#quote'; a.style.cssText = 'width:100%;margin-top:14px'; a.textContent = 'Get a quote'; out.appendChild(a);
-});
+}
