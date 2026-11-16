@@ -19,13 +19,13 @@ document.getElementById('sendcalc').addEventListener('click',function(){
   var r = calc();
   need.value = 'Infield conditioner: about ' + r.tons + ' tons (' + r.bags + ' bags, ' + r.pallets + ' pallets) for ' + area.value + ' sq ft at ' + depth.options[depth.selectedIndex].text + '.';
 });
-document.querySelectorAll('.card').forEach(function(c){ c.addEventListener('click',function(){ need.value = 'Please quote: ' + c.dataset.product + '. '; }); });
+document.querySelectorAll('.card[data-product]').forEach(function(c){ c.addEventListener('click',function(){ need.value = 'Please quote: ' + c.dataset.product + '. '; }); });
 calc();
 
 /* Quote form: sends the request to HubSpot. No tracking scripts are loaded. */
 var HS_URL = 'https://api.hsforms.com/submissions/v3/integration/submit/22428113/eeae102b-76cf-4d4a-a297-bd196cd36e0c';
 var interest = '', estimate = '';
-document.querySelectorAll('.card').forEach(function(c){ c.addEventListener('click',function(){ interest = c.dataset.product; }); });
+document.querySelectorAll('.card[data-product]').forEach(function(c){ c.addEventListener('click',function(){ interest = c.dataset.product; }); });
 document.getElementById('sendcalc').addEventListener('click',function(){ estimate = need.value; });
 var qf = document.getElementById('quoteform'), msg = document.getElementById('formmsg'), sendbtn = document.getElementById('sendbtn');
 function showMsg(html){ msg.innerHTML = html; msg.hidden = false; }
@@ -70,7 +70,7 @@ function showDistributors(){
   var list = distData.filter(function(d){ return d.state === st; });
   if (list.length){
     var ul = document.createElement('ul');
-    list.forEach(function(d){ var li = document.createElement('li'), b = document.createElement('b'), sp = document.createElement('span'); b.textContent = d.name; sp.textContent = d.city + ', ' + d.state; li.appendChild(b); li.appendChild(sp); ul.appendChild(li); });
+    list.forEach(function(d){ var li = document.createElement('li'), b = document.createElement('b'), sp = document.createElement('span'); b.textContent = d.name; sp.textContent = d.city + ', ' + d.state + (d.note ? ' \u00b7 ' + d.note : ''); li.appendChild(b); li.appendChild(sp); ul.appendChild(li); });
     out.appendChild(ul);
     var p = document.createElement('p'); p.className = 'none note'; p.textContent = 'Tell us which one you prefer in your quote request and we will connect you.'; out.appendChild(p);
   } else {
@@ -78,3 +78,7 @@ function showDistributors(){
   }
   var a = document.createElement('a'); a.className = 'btn dark'; a.href = '#quote'; a.style.cssText = 'width:100%;margin-top:14px'; a.textContent = 'Get a quote'; out.appendChild(a);
 }
+
+/* Product pages link here with ?product=Name so the request is pre-filled */
+var qp = new URLSearchParams(location.search).get('product');
+if (qp){ interest = qp.slice(0,80); need.value = 'Please quote: ' + interest + '. '; }

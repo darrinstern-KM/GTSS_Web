@@ -100,6 +100,10 @@ guide = f'''<div class="pagehead">
     <h2 id="bricks">Rebuilding with clay bricks: 6 steps</h2>
     <ol>{STEPS}</ol>
 
+    <h2 id="video">Watch it done</h2>
+    <div class="video"><button type="button" data-yt="vfJxFwtsk6s" data-title="Mound Repair and Maintenance, a video by Ohio State Horticulture and Crop Science"><span class="play" aria-hidden="true"></span><strong>Mound repair and maintenance</strong><span>Play video. Loads from YouTube.</span></button></div>
+    <p class="note">Video by Ohio State Horticulture and Crop Science, shown for reference. It is an independent resource and not affiliated with GameTime.</p>
+
     <h2 id="areas">Where the high-stress areas are</h2>
     <div class="diagram">{DIAGRAM}</div>
 

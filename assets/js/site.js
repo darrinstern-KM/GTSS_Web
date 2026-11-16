@@ -19,3 +19,13 @@ function onScroll(){
   }
 }
 window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* Videos load only when the visitor clicks, so no third-party tracking happens on page load */
+document.querySelectorAll('[data-yt]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?autoplay=1&rel=0';
+    f.title = btn.dataset.title; f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+    btn.parentNode.replaceChild(f, btn); f.focus();
+  });
+});

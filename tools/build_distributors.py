@@ -15,7 +15,7 @@ n, ns = len(dists), len(by)
 jump = ''.join(f'<a href="#{s.lower()}">{e(names[s])}</a>' for s in by)
 cards = ''.join(
     f'<div class="state fade" id="{s.lower()}"><h2>{e(names[s])}</h2><ul>' +
-    ''.join(f'<li><b>{e(d["name"])}</b><span>{e(d["city"])}, {s}</span></li>' for d in lst) +
+    ''.join(f'<li><b>{e(d["name"])}</b><span>{e(d["city"])}, {s}{" &middot; " + e(d["note"]) if d.get("note") else ""}</span></li>' for d in lst) +
     '</ul></div>\n      ' for s, lst in by.items())
 ld = json.dumps({"@context": "https://schema.org", "@type": "ItemList", "name": "GameTime Sports Systems distributors",
                  "numberOfItems": n, "itemListElement": [
