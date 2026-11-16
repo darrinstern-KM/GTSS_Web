@@ -27,3 +27,15 @@ RedirectMatch 404 ^/tools/
 # Old WordPress addresses that changed
 RedirectMatch 301 ^/products/game-time-stripe-it-bluk-paint/?$ /products/gametime-stripe-it-bulk-paint/
 RedirectMatch 301 ^/products/game-time-infield-conditioners/?$ /products/#infield-conditioners
+RedirectMatch 301 ^/privacy-policy/?$ /privacy/
+RedirectMatch 301 ^/distributor-opportunities/?$ /distributors/#become
+RedirectMatch 301 ^/faqs/?$ /#faq
+RedirectMatch 301 ^/product/gametime-stripe-it-athletic-field-paint/?$ /products/gametime-stripe-it-spray-paint/
+RedirectMatch 301 ^/(product|product-category|product-tag)/ /products/
+RedirectMatch 301 ^/(shop|shop-categories)/?$ /products/
+RedirectMatch 301 ^/products/gametime-equipment(/.*)?$ /products/
+RedirectMatch 301 ^/20(13|15|18)/[0-9]+/[0-9]+/(mound-clay|groundskeeping-pt-1-fixing-holes-in-mound-plate-areas)/?$ /resources/pitchers-mound-guide/
+RedirectMatch 301 ^/20[0-9][0-9]/[0-9]+/[0-9]+/ /resources/
+RedirectMatch 301 ^/(blog|blog-post|category|tag)(/.*)?$ /resources/
+RedirectMatch 301 ^/(cart|checkout|my-account|my-orders|dashboard|wishlist|shopping-cart|store-listing|yith-compare|services|test)(/.*)?$ /
+RedirectMatch 301 ^/(brand|ftc_team|ftc_testimonial|ftc_testimonials)(/.*)?$ /

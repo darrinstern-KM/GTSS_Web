@@ -1,3 +1,9 @@
+/* Fonts are served from this site, so no visitor data goes to a font provider */
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/inter-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("/assets/fonts/inter-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/inter-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/barlow-condensed-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url("/assets/fonts/barlow-condensed-latin-700-normal.woff2") format("woff2")}
 /* ========== 1. COLORS AND FONTS: change these 8 lines to restyle the whole page ========== */
 :root{
   --ink:#14181B;      /* near-black: header, hero, footer */
@@ -253,3 +259,17 @@ table.cov tfoot td,table.cov tfoot th{font-weight:700;background:var(--chalk)}
 .psplit h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:18px}
 .callout{background:#fff;border-left:4px solid var(--clay);padding:18px 22px;border-radius:0 6px 6px 0;margin-top:24px;font-size:.95rem}
 @media (max-width:900px){.psplit{grid-template-columns:1fr;gap:32px}}
+
+/* ========== TEXT PAGES ========== */
+.prose{max-width:780px}
+.prose h2{font-size:clamp(1.5rem,3vw,2rem);margin:44px 0 12px}
+.prose h3{margin:24px 0 6px}
+.prose p,.prose ul,.prose ol{margin:0 0 14px}
+.prose ul,.prose ol{padding-left:22px}
+.prose li{margin-bottom:6px}
+.prose a{color:var(--clay);font-weight:600;text-underline-offset:3px}
+.updated{color:var(--muted);font-size:.92rem;margin-bottom:28px}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.contactgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.team,.contactgrid{grid-template-columns:1fr}}
+.box h2{font-size:1.5rem;margin:0 0 8px}

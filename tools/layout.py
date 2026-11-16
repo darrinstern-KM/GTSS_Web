@@ -1,7 +1,6 @@
 """Shared page shell for generated pages. Used by the build scripts in this folder."""
-FONTS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">'''
+FONTS = '''<link rel="preload" href="/assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>'''
 
 NAV = [('Products', '/products/'), ('Calculator', '/#calculator'), ('Distributors', '/distributors/'), ('Guides', '/resources/'), ('Ordering', '/#ordering')]
 
@@ -45,7 +44,7 @@ def page(title, description, path, body, current=None, extra_head=''):
 <footer>
   <div class="wrap">
     <span>&copy; <span id="yr">2026</span> GameTime Sports Systems, LLC. Northbrook, Illinois.</span>
-    <nav aria-label="Footer"><a href="/distributors/">Distributors</a><a href="/resources/">Guides</a><a href="/privacy/">Privacy policy</a><a href="/terms-and-conditions/">Terms</a><a href="/accessibility/">Accessibility</a><a href="#top">Back to top</a></nav>
+    <nav aria-label="Footer"><a href="/about-us/">About</a><a href="/contact-us/">Contact</a><a href="/distributors/">Distributors</a><a href="/resources/">Guides</a><a href="/credit-terms/">Credit terms</a><a href="/privacy/">Privacy policy</a><a href="/terms-and-conditions/">Terms</a><a href="/accessibility/">Accessibility</a><a href="#top">Back to top</a></nav>
   </div>
 </footer>
 
