@@ -1,0 +1,6 @@
+# GameTime Sports Systems
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://gametimesportssystems.com/sitemap.xml

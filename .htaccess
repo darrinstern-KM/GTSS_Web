@@ -1,5 +1,14 @@
 # GameTime Sports Systems static site
 
+ErrorDocument 404 /404.html
+
+# One address for the live site: https, no www
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.gametimesportssystems\.com$ [NC]
+  RewriteRule ^(.*)$ https://gametimesportssystems.com/$1 [R=301,L]
+</IfModule>
+
 # Keep staging out of search engines. Has no effect on the live domain.
 SetEnvIfNoCase Host ^staging\. STAGING
 SetEnvIf Request_URI ^/staging/ STAGING
@@ -39,3 +48,5 @@ RedirectMatch 301 ^/20[0-9][0-9]/[0-9]+/[0-9]+/ /resources/
 RedirectMatch 301 ^/(blog|blog-post|category|tag)(/.*)?$ /resources/
 RedirectMatch 301 ^/(cart|checkout|my-account|my-orders|dashboard|wishlist|shopping-cart|store-listing|yith-compare|services|test)(/.*)?$ /
 RedirectMatch 301 ^/(brand|ftc_team|ftc_testimonial|ftc_testimonials)(/.*)?$ /
+RedirectMatch 301 ^/(wp-admin|wp-login\.php|wp-content|wp-includes|wp-json|feed)(/.*)?$ /
+RedirectMatch 301 ^/(sitemap_index|page-sitemap|post-sitemap|product-sitemap)\.xml$ /sitemap.xml
