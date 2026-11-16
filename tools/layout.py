@@ -3,7 +3,7 @@ FONTS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">'''
 
-NAV = [('Products', '/#products'), ('Calculator', '/#calculator'), ('Distributors', '/distributors/'), ('Guides', '/resources/'), ('Ordering', '/#ordering')]
+NAV = [('Products', '/products/'), ('Calculator', '/#calculator'), ('Distributors', '/distributors/'), ('Guides', '/resources/'), ('Ordering', '/#ordering')]
 
 def page(title, description, path, body, current=None, extra_head=''):
     nav = ''.join(f'<a href="{h}"{" aria-current=" + chr(34) + "page" + chr(34) if n == current else ""}>{n}</a>\n      ' for n, h in NAV)

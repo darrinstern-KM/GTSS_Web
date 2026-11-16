@@ -23,3 +23,7 @@ RedirectMatch 404 /\.git
 
 # Keep build tools private
 RedirectMatch 404 ^/tools/
+
+# Old WordPress addresses that changed
+RedirectMatch 301 ^/products/game-time-stripe-it-bluk-paint/?$ /products/gametime-stripe-it-bulk-paint/
+RedirectMatch 301 ^/products/game-time-infield-conditioners/?$ /products/#infield-conditioners
